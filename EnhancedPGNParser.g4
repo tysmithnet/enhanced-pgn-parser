@@ -8,27 +8,7 @@ parser grammar EnhancedPGNParser;
 options {   tokenVocab = EnhancedPGNLexer; }
 
 parse
-    : alternate_line
-    ;
-
-move_num_indicator
-    : MOVE_NUM_INDICATOR
-    ;
-
-alternate_line
-    : ALTERNATE_LINE_START move_num_indicator san san? (move_num_indicator san san?)? ALTERNATE_LINE_END
-    ;
-
-san
-    : PAWN_MOVE
-    ;
-
-pawn_move
-    : PAWN_MOVE
-    ;
- 
-piece_move
-    : PIECE_MOVE
+    : block_comment
     ;
 
 block_comment
@@ -36,7 +16,11 @@ block_comment
     ;
 
 block_comment_body
-    : BLOCK_COMMENT_TEXT? command* BLOCK_COMMENT_TEXT?
+    : block_comment_text? command* block_comment_text?
+    ;
+
+block_comment_text
+    : BLOCK_COMMENT_TEXT
     ;
 
 command
