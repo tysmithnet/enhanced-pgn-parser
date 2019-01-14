@@ -5,13 +5,41 @@
  */
 lexer grammar EnhancedPGNLexer;
 
-BLOCK_COMMENT_START 
-    : '{' -> pushMode(BLOCK_COMMENT)
-    ;
+
 
 STRING
     : '"' ('\\\\' | '\\"' | ~[\\"])* '"'
     ; 
+
+MOVE_NUM
+    : '0'..'9' '.' '.'? '.'? -> pushMode(MOVE_TEXT)
+    ;
+
+mode MOVE_TEXT;
+
+BLOCK_COMMENT_START 
+    : '{' -> pushMode(BLOCK_COMMENT)
+    ;
+
+WS
+    : (' '|'\n'|'\r') -> skip
+    ;
+
+PIECE
+    : [PNBRQK]
+    ;
+
+LOCATION
+    : [a-h][1-8]
+    ;
+
+ALTERNATE_LINE_START
+    : '('
+    ;
+
+ALTERNATE_LINE_END
+    : ')'
+    ;
 
 mode BLOCK_COMMENT;
 
