@@ -56,9 +56,23 @@ move_num
     ;
 
 san
-    : pawn_move
+    : capture
+    | pawn_move
     | piece_move
     | castle
+    ;
+
+capture
+    : pawn_capture
+    | piece_capture
+    ;
+
+pawn_capture
+    : FILE CAPTURE_MARKER LOCATION
+    ;
+
+piece_capture
+    : PIECE FILE? RANK? CAPTURE_MARKER LOCATION
     ;
 
 pawn_move
@@ -66,7 +80,7 @@ pawn_move
     ;
 
 piece_move
-    : PIECE LOCATION
+    : PIECE RANK? FILE? LOCATION
     ;
 
 castle

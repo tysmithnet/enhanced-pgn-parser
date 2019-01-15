@@ -36,7 +36,15 @@ PIECE
     ;
 
 LOCATION
-    : [a-h][1-8]
+    : FILE RANK
+    ;
+
+RANK
+    : [1-8]
+    ;
+
+FILE
+    : [a-h]
     ;
 
 SHORT_CASTLE
@@ -45,6 +53,10 @@ SHORT_CASTLE
 
 LONG_CASTLE
     : 'O-O-O'
+    ;
+
+CAPTURE_MARKER
+    : 'x'
     ;
 
 ALTERNATE_LINE_START
