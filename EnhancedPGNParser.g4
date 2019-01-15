@@ -34,7 +34,7 @@ eol_comment_body
     ;
 
 turn
-    : move_num san alternate_line* san? alternate_line*
+    : comment* move_num comment* san comment* alternate_line* comment* san? comment* alternate_line* comment*
     ;
 
 inter_san_item
