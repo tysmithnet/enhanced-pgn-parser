@@ -56,10 +56,56 @@ move_num
     ;
 
 san
-    : capture
-    | pawn_move
-    | piece_move
-    | castle
+    : capture move_extra?
+    | pawn_move move_extra?
+    | piece_move move_extra?
+    | castle move_analysis?
+    ;
+
+move_extra
+    : check move_analysis?
+    | checkmate move_analysis?
+    ;
+
+check
+    : CHECK
+    ;
+
+checkmate
+    : CHECKMATE
+    ;
+
+move_analysis
+    : blunder
+    | mistake
+    | dubious_move
+    | interesting_move
+    | good_move
+    | brilliant_move
+    ;
+
+blunder
+    : BLUNDER
+    ;
+
+mistake
+    : MISTAKE
+    ;
+
+dubious_move
+    : DUBIOUS_MOVE
+    ;
+
+interesting_move
+    : INTERESTING_MOVE
+    ;
+
+good_move
+    : GOOD_MOVE
+    ;
+
+brilliant_move
+    : BRILLIANT_MOVE
     ;
 
 capture

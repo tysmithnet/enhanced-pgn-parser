@@ -67,6 +67,38 @@ ALTERNATE_LINE_END
     : ')'
     ;
 
+BLUNDER
+    : '??'
+    ;
+
+MISTAKE
+    : '?'
+    ;
+
+DUBIOUS_MOVE
+    : '?!'
+    ;
+
+INTERESTING_MOVE
+    : '!?'
+    ;
+
+GOOD_MOVE
+    : '!'
+    ;
+
+BRILLIANT_MOVE
+    : '!!'
+    ;
+
+CHECK
+    : '+'
+    ;
+
+CHECKMATE
+    : '#'
+    ;
+
 mode EOL_COMMENT;
 
 EOL_COMMENT_TEXT
