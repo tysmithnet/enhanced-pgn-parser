@@ -21,7 +21,7 @@ move_text_item
     ;
 
 turn
-    : move_num block_comment? san block_comment? san? block_comment?
+    : move_num san san
     ;
 
 alternate_line
@@ -33,12 +33,14 @@ alternate_line_body
     ;
 
 move_num
-    : MOVE_NUM
+    : MOVE_TEXT_START
+    | MOVE_NUM
     ;
 
 san
     : pawn_move
     | piece_move
+    | castle
     ;
 
 pawn_move
@@ -47,6 +49,11 @@ pawn_move
 
 piece_move
     : PIECE LOCATION
+    ;
+
+castle
+    : LONG_CASTLE
+    | SHORT_CASTLE
     ;
 
 block_comment

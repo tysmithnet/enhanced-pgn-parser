@@ -11,11 +11,15 @@ STRING
     : '"' ('\\\\' | '\\"' | ~[\\"])* '"'
     ; 
 
-MOVE_NUM
-    : '0'..'9' '.' '.'? '.'? -> pushMode(MOVE_TEXT)
+MOVE_TEXT_START
+    : [0-9]+ '.' '.'? '.'? -> mode(MOVE_TEXT)
     ;
 
 mode MOVE_TEXT;
+
+MOVE_NUM
+    : [0-9]+ '.' '.'? '.'?
+    ;
 
 BLOCK_COMMENT_START 
     : '{' -> pushMode(BLOCK_COMMENT)
@@ -31,6 +35,14 @@ PIECE
 
 LOCATION
     : [a-h][1-8]
+    ;
+
+SHORT_CASTLE
+    : 'O-O'
+    ;
+
+LONG_CASTLE
+    : 'O-O-O'
     ;
 
 ALTERNATE_LINE_START
