@@ -17,11 +17,24 @@ move_text
 
 move_text_item
     : turn
-    | block_comment
+    | comment
+    ;
+
+comment
+    : block_comment
+    | eol_comment
+    ;
+
+eol_comment
+    : EOL_COMMENT_START eol_comment_body EOL_COMMENT_END
+    ;
+
+eol_comment_body
+    : EOL_COMMENT_TEXT
     ;
 
 turn
-    : move_num san san
+    : move_num comment* san comment* san comment*
     ;
 
 alternate_line

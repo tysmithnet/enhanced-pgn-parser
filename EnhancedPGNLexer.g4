@@ -5,8 +5,6 @@
  */
 lexer grammar EnhancedPGNLexer;
 
-
-
 STRING
     : '"' ('\\\\' | '\\"' | ~[\\"])* '"'
     ; 
@@ -16,6 +14,10 @@ MOVE_TEXT_START
     ;
 
 mode MOVE_TEXT;
+
+EOL_COMMENT_START
+    : ';' -> pushMode(EOL_COMMENT)
+    ;
 
 MOVE_NUM
     : [0-9]+ '.' '.'? '.'?
@@ -51,6 +53,16 @@ ALTERNATE_LINE_START
 
 ALTERNATE_LINE_END
     : ')'
+    ;
+
+mode EOL_COMMENT;
+
+EOL_COMMENT_TEXT
+    : ~('\n')+
+    ;
+
+EOL_COMMENT_END
+    : '\n' -> popMode
     ;
 
 mode BLOCK_COMMENT;
