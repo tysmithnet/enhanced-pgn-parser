@@ -8,7 +8,23 @@ parser grammar EnhancedPGNParser;
 options {   tokenVocab = EnhancedPGNLexer; }
 
 parse
-    : move_text
+    : tag_pairs
+    ;
+
+tag_pairs
+    : tag_pair+
+    ;
+
+tag_pair
+    : TAG_START tag_key tag_value TAG_END
+    ;
+
+tag_key
+    : TAG_KEY
+    ;
+
+tag_value
+    : TAG_VALUE
     ;
 
 move_text

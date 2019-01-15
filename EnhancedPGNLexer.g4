@@ -5,12 +5,30 @@
  */
 lexer grammar EnhancedPGNLexer;
 
+TAG_START
+    : '[' -> pushMode(TAG_PAIRS)
+    ;
+
 STRING
     : '"' ('\\\\' | '\\"' | ~[\\"])* '"'
     ; 
 
 MOVE_TEXT_START
     : [0-9]+ '.' '.'? '.'? -> mode(MOVE_TEXT)
+    ;
+
+mode TAG_PAIRS;
+
+TAG_END
+    : ']' -> popMode
+    ;
+
+TAG_VALUE
+    : STRING
+    ;
+
+TAG_KEY
+    : [a-zA-Z0-9_]+
     ;
 
 mode MOVE_TEXT;
