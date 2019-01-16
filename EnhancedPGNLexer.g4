@@ -14,7 +14,7 @@ STRING
     ; 
 
 MOVE_TEXT_START
-    : [0-9]+ '.' '.'? '.'? -> mode(MOVE_TEXT)
+    : [0-9]+ '.' '.'? '.'? -> pushMode(MOVE_TEXT)
     ;
 
 NEW_LINE
@@ -126,7 +126,7 @@ CHECKMATE
     ;
 
 WHITE_WINS
-    : '1-0' 
+    : '1-0'
     ;
 
 BLACK_WINS
@@ -138,7 +138,7 @@ DRAW
     ;
 
 UNKOWN_ENDING
-    : '*'
+    : '*' -> popMode
     ;
 
 mode EOL_COMMENT;

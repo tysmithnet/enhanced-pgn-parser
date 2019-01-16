@@ -8,11 +8,11 @@ parser grammar EnhancedPGNParser;
 options {   tokenVocab = EnhancedPGNLexer; }
 
 parse
-    : pgn_database
+    : pgn_database NEW_LINE* EOF
     ;
 
 pgn_database
-    : pgn*
+    : pgn (NEW_LINE+ pgn)* 
     ;
 
 pgn
