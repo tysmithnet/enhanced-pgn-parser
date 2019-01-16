@@ -104,15 +104,15 @@ move_num
     ;
 
 san
-    : capture move_extra?
-    | pawn_move move_extra?
-    | piece_move move_extra?
+    : capture check_like? move_analysis?
+    | pawn_move check_like? move_analysis?
+    | piece_move check_like? move_analysis?
     | castle move_analysis?
     ;
 
-move_extra
-    : check move_analysis?
-    | checkmate move_analysis?
+check_like
+    : check
+    | checkmate
     ;
 
 check
