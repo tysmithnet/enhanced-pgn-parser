@@ -17,6 +17,10 @@ MOVE_TEXT_START
     : [0-9]+ '.' '.'? '.'? -> mode(MOVE_TEXT)
     ;
 
+NEW_LINE
+    : '\n'
+    ;
+
 mode TAG_PAIRS;
 
 TAG_END
@@ -29,6 +33,10 @@ TAG_VALUE
 
 TAG_KEY
     : [a-zA-Z0-9_]+
+    ;
+
+TAG_SPACE
+    : ' '
     ;
 
 mode MOVE_TEXT;
@@ -115,6 +123,22 @@ CHECK
 
 CHECKMATE
     : '#'
+    ;
+
+WHITE_WINS
+    : '1-0'
+    ;
+
+BLACK_WINS
+    : '0-1'
+    ;
+
+DRAW
+    : '1/2-1/2'
+    ;
+
+UNKOWN_ENDING
+    : '*'
     ;
 
 mode EOL_COMMENT;

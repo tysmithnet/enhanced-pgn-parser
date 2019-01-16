@@ -8,15 +8,16 @@ parser grammar EnhancedPGNParser;
 options {   tokenVocab = EnhancedPGNLexer; }
 
 parse
-    : tag_pairs
+    : move_text
+    | tag_pairs NEW_LINE move_text
     ;
 
 tag_pairs
-    : tag_pair+
+    : (tag_pair NEW_LINE)+
     ;
 
 tag_pair
-    : TAG_START tag_key tag_value TAG_END
+    : TAG_START tag_key TAG_SPACE+ tag_value TAG_END
     ;
 
 tag_key
@@ -28,7 +29,30 @@ tag_value
     ;
 
 move_text
-    : move_text_item*
+    : move_text_item* game_termination comment*
+    ;
+
+game_termination
+    : white_wins
+    | black_wins
+    | draw
+    | unknown_ending
+    ;
+
+white_wins
+    : WHITE_WINS
+    ;
+
+black_wins
+    : BLACK_WINS
+    ;
+
+draw
+    : DRAW
+    ;
+
+unknown_ending
+    : UNKOWN_ENDING
     ;
 
 move_text_item
