@@ -126,7 +126,7 @@ CHECKMATE
     ;
 
 WHITE_WINS
-    : '1-0'
+    : '1-0' 
     ;
 
 BLACK_WINS

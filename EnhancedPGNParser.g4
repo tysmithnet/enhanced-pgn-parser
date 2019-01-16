@@ -8,6 +8,14 @@ parser grammar EnhancedPGNParser;
 options {   tokenVocab = EnhancedPGNLexer; }
 
 parse
+    : pgn_database
+    ;
+
+pgn_database
+    : pgn*
+    ;
+
+pgn
     : move_text
     | tag_pairs NEW_LINE move_text
     ;
