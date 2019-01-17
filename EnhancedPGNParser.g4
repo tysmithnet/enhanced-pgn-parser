@@ -192,7 +192,7 @@ castle
     ;
 
 block_comment
-    : BLOCK_COMMENT_START block_comment_body BLOCK_COMMENT_END
+    : (BLOCK_COMMENT_START|MOVE_TEXT_START_WITH_COMMENT) block_comment_body BLOCK_COMMENT_END
     ;
 
 block_comment_body

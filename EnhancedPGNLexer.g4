@@ -17,6 +17,10 @@ MOVE_TEXT_START
     : [0-9]+ '.' '.'? '.'? -> pushMode(MOVE_TEXT)
     ;
 
+MOVE_TEXT_START_WITH_COMMENT
+    : '{' -> pushMode(MOVE_TEXT), pushMode(BLOCK_COMMENT)
+    ;
+
 NEW_LINE
     : '\n'
     ;
