@@ -126,19 +126,23 @@ CHECKMATE
     ;
 
 WHITE_WINS
-    : '1-0'
+    : '1-0' -> popMode
     ;
 
 BLACK_WINS
-    : '0-1'
+    : '0-1' -> popMode
     ;
 
 DRAW
-    : '1/2-1/2'
+    : '1/2-1/2' -> popMode
     ;
 
 UNKOWN_ENDING
     : '*' -> popMode
+    ;
+
+NAG
+    : '$' [0-9]+
     ;
 
 mode EOL_COMMENT;

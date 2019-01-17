@@ -68,6 +68,15 @@ move_text_item
     | comment
     ;
 
+turn_item
+    : nag
+    | comment
+    ;
+
+nag
+    : NAG
+    ;
+
 comment
     : block_comment
     | eol_comment
@@ -82,7 +91,7 @@ eol_comment_body
     ;
 
 turn
-    : comment* move_num comment* san comment* alternate_line* comment* san? comment* alternate_line* comment*
+    : turn_item* move_num turn_item* san turn_item* (alternate_line|nag)* turn_item* san? turn_item* (alternate_line|nag)* turn_item*
     ;
 
 inter_san_item
