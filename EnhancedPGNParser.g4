@@ -175,15 +175,24 @@ pawn_capture
     ;
 
 piece_capture
-    : PIECE FILE? RANK? CAPTURE_MARKER LOCATION
+    : piece FILE? RANK? CAPTURE_MARKER LOCATION
     ;
 
 pawn_move
     : LOCATION
+    | promotion
+    ;
+
+promotion
+    : LOCATION PROMOTION piece
+    ;
+
+piece
+    : PIECE
     ;
 
 piece_move
-    : PIECE RANK? FILE? LOCATION
+    : piece RANK? FILE? LOCATION
     ;
 
 castle

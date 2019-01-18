@@ -62,11 +62,15 @@ WS
     ;
 
 PIECE
-    : [PNBRQK]
+    : [NBRQK]
     ;
 
 LOCATION
     : FILE RANK
+    ;
+
+PROMOTION
+    : '='
     ;
 
 RANK
