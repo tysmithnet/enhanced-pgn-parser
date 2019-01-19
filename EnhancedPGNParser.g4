@@ -17,7 +17,7 @@ pgn_database
 
 pgn
     : move_text
-    | tag_pairs NEW_LINE move_text
+    | tag_pairs NEW_LINE+ move_text
     ;
 
 tag_pairs
@@ -116,7 +116,7 @@ san
     : capture check_like? move_analysis?
     | pawn_move check_like? move_analysis?
     | piece_move check_like? move_analysis?
-    | castle move_analysis?
+    | castle check_like? move_analysis?
     ;
 
 check_like
@@ -172,6 +172,7 @@ capture
 
 pawn_capture
     : FILE CAPTURE_MARKER LOCATION
+    | FILE CAPTURE_MARKER promotion
     ;
 
 piece_capture
