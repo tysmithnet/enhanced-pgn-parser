@@ -2,7 +2,7 @@
   "name": "enhanced-pgn-parser",
   "version": "0.0.1",
   "description": "PGN parser for the de facto standard PGN format that has been adopted by the community. Unlike other parsers, it does not ignore annotations and commands.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "repository": "https://github.com/tysmithnet/enhanced-pgn-parser.git",
   "author": "@tysmithnet",
   "license": "MIT",
