@@ -11,9 +11,12 @@
     "antlr4ts": "^0.5.0-alpha.1"
   },
   "devDependencies": {
-    "antlr4ts-cli": "^0.5.0-alpha.1"
+    "antlr4ts-cli": "^0.5.0-alpha.1",
+    "tsc": "^1.20150623.0",
+    "typescript": "^3.2.4"
   },
   "scripts": {
-    "antlr4ts": "antlr4ts EnhancedPGNLexer.g4 && antlr4ts -visitor EnhancedPGNParser.g4"
+    "antlr4ts": "antlr4ts EnhancedPGNLexer.g4 && antlr4ts -visitor EnhancedPGNParser.g4",
+    "build": "tsc"
   }
 }
