@@ -6,5 +6,14 @@
   "repository": "https://github.com/tysmithnet/enhanced-pgn-parser.git",
   "author": "@tysmithnet",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "dependencies": {
+    "antlr4ts": "^0.5.0-alpha.1"
+  },
+  "devDependencies": {
+    "antlr4ts-cli": "^0.5.0-alpha.1"
+  },
+  "scripts": {
+    "antlr4ts": "antlr4ts EnhancedPGNLexer.g4 && antlr4ts -visitor EnhancedPGNParser.g4"
+  }
 }
