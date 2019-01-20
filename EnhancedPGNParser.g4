@@ -120,12 +120,17 @@ san
     ;
 
 check_like
-    : check
+    : double_check
+    | check
     | checkmate
     ;
 
 check
     : CHECK
+    ;
+
+double_check
+    : CHECK CHECK
     ;
 
 checkmate
