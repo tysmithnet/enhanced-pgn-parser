@@ -1,11 +1,10 @@
-# enhanced-pgn-parser
-This is lexer/parser for enhanced PGN databases. The enhanced PGN form makes heavy use of block comments and commands to provide supplemental information. For example, collored squares and arrows are encoded in block comments, and existing parsers simply discard block comments.
+import { ANTLRInputStream, CommonTokenStream } from "antlr4ts";
+import {ParseTreeWalker} from "antlr4ts/tree";
+import {EnhancedPGNLexer} from "./EnhancedPGNLexer";
+import {EnhancedPGNParser, PgnContext} from "./EnhancedPGNParser";
+import {EnhancedPGNParserListener} from "./EnhancedPGNParserListener";
 
-## Installation
-`yarn add enhanced-pgn-parser`
-
-## Usage
-``` TypeScript
+// Create the lexer and parser
 let inputStream = new ANTLRInputStream(`[Event "F/S Return Match"]
 [Site "Belgrade, Serbia JUG"]
 [Date "1992.11.04"]
@@ -35,4 +34,3 @@ class ExampleListener implements EnhancedPGNParserListener {
 let result = parser.parse();
 var listener = new ExampleListener();
 ParseTreeWalker.DEFAULT.walk<EnhancedPGNParserListener>(listener, result);
-```
