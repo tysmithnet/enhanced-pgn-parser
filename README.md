@@ -6,6 +6,13 @@ This is a lexer/parser for enhanced PGN databases. The enhanced PGN form makes h
 
 ## Usage
 ``` TypeScript
+import { ANTLRInputStream, CommonTokenStream } from "antlr4ts";
+import {ParseTreeWalker} from "antlr4ts/tree";
+import {EnhancedPGNLexer} from "./EnhancedPGNLexer";
+import {EnhancedPGNParser, PgnContext, Block_commentContext, Block_comment_bodyContext} from "./EnhancedPGNParser";
+import {EnhancedPGNParserListener} from "./EnhancedPGNParserListener";
+
+// Create the lexer and parser
 let inputStream = new ANTLRInputStream(`[Event "F/S Return Match"]
 [Site "Belgrade, Serbia JUG"]
 [Date "1992.11.04"]
@@ -27,9 +34,9 @@ let tokenStream = new CommonTokenStream(lexer);
 let parser = new EnhancedPGNParser(tokenStream);
 
 class ExampleListener implements EnhancedPGNParserListener {
-    public enterPgn: (ctx: PgnContext) => void = (ctx) => {
-        console.log("FOUND A GAME!");
-    };
+    public enterBlock_comment_body (ctx: Block_comment_bodyContext) {
+        console.log(ctx.text); // This opening is called the Ruy Lopez.
+    }
 }
 
 let result = parser.parse();
