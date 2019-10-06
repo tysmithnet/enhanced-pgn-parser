@@ -1,7 +1,7 @@
 import { ANTLRInputStream, CommonTokenStream } from "antlr4ts";
 import {ParseTreeWalker} from "antlr4ts/tree";
 import {EnhancedPGNLexer} from "./EnhancedPGNLexer";
-import {EnhancedPGNParser, PgnContext} from "./EnhancedPGNParser";
+import {EnhancedPGNParser, PgnContext, Block_commentContext, Block_comment_bodyContext} from "./EnhancedPGNParser";
 import {EnhancedPGNParserListener} from "./EnhancedPGNParserListener";
 
 // Create the lexer and parser
@@ -26,9 +26,9 @@ let tokenStream = new CommonTokenStream(lexer);
 let parser = new EnhancedPGNParser(tokenStream);
 
 class ExampleListener implements EnhancedPGNParserListener {
-    public enterPgn: (ctx: PgnContext) => void = (ctx) => {
-        console.log("FOUND A GAME!");
-    };
+    public enterBlock_comment_body (ctx: Block_comment_bodyContext) {
+        console.log(ctx.text); // This opening is called the Ruy Lopez.
+    }
 }
 
 let result = parser.parse();

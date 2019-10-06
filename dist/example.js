@@ -25,10 +25,8 @@ let lexer = new EnhancedPGNLexer_1.EnhancedPGNLexer(inputStream);
 let tokenStream = new antlr4ts_1.CommonTokenStream(lexer);
 let parser = new EnhancedPGNParser_1.EnhancedPGNParser(tokenStream);
 class ExampleListener {
-    constructor() {
-        this.enterPgn = (ctx) => {
-            console.log("FOUND A GAME!");
-        };
+    enterBlock_comment_body(ctx) {
+        console.log(ctx.text); // This opening is called the Ruy Lopez.
     }
 }
 let result = parser.parse();
